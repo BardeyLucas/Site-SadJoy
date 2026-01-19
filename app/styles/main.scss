@@ -1,0 +1,9 @@
+@use './base.scss' as *;
+@use './foundations/functions' as *;
+@use './foundations/variables' as *;
+
+  html {
+    background-color: var(--color-slate-950);
+    min-height: 100vh;
+    color: var(--color-slate-50);
+}
