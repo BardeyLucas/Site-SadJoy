@@ -1,5 +1,7 @@
 <template>
-  <div class="">
-    <p>Welcome to your Nuxt 3 App</p>
-  </div>
+  <SiteHeader />
+    <main>
+      <NuxtPage />
+    </main>
+  <SiteFooter />
 </template>
