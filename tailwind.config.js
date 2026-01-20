@@ -1,8 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./app.vue', './pages/**/*.{js,ts,vue}', './components/**/*.{js,ts,vue}', './layouts/**/*.{js,ts,vue}'],
+    content: [
+    './components/**/*.{vue,js,ts}',
+    './layouts/**/*.{vue,js,ts}',
+    './pages/**/*.{vue,js,ts}',
+    './app.vue',
+    './node_modules/@nuxt/ui/**/*.{js,ts,vue}',
+  ],
   theme: {
     extend: {
+      fontFamily: {
+        josefin: ['"Josefin Sans"', 'sans-serif'],
+        arimo: ['Arimo', 'sans-serif'],
+      },
       gridTemplateColumns: {
         principal: 'repeat(12, 1fr)',
         pc12: 'repeat(12, 1fr)',
