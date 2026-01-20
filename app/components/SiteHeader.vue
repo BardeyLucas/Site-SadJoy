@@ -16,11 +16,11 @@ const user = ref<boolean>(false)
         </nav>
         <div class="w-full md:w-fit absolute flex md:relative">
             <button @click="isOpen = !isOpen" class="h-[100vh] md:h-fit w-[50vw] md:w-fit hidden" :class="{'!block': isOpen}"></button>
-            <nav class="flex md:gap-5 lg:gap-8 items-center hidden md:flex" :class="{ '!flex flex-col md:flex-row bg-slate-950 h-[100vh] md:h-auto w-[50vw] md:w-auto sticky': isOpen, '!flex-col-reverse md:!flex-row justify-end': isOpen && user}">
+            <nav class="flex md:gap-8 lg:gap-12 items-center hidden md:flex" :class="{ '!flex flex-col md:flex-row bg-slate-900 md:bg-slate-950 h-[100vh] md:h-auto w-[50vw] md:w-auto sticky': isOpen, '!flex-col-reverse md:!flex-row justify-end': isOpen && user}">
                 <NuxtLink v-if="!user" to="/succes" class="md:bg-slate-700 w-full md:w-fit h-16 md:h-fit md:rounded-full border-b md:border border-slate-500"><button class="h-full w-full px-4 py-1.5 text-lg md:text-base lg:text-xl">Connexion</button></NuxtLink>
                 <NuxtLink v-else to="/succes" class="md:bg-slate-700 w-full md:w-fit h-16 md:h-fit md:rounded-full border-b md:border border-slate-500"><button class="h-full w-full px-4 py-1.5 text-lg md:text-base lg:text-xl">Voir mes succès</button></NuxtLink>
                 <NuxtLink v-if="!user" to="/succes" class="md:bg-slate-700 w-full md:w-fit h-16 md:h-fit md:rounded-full border-b md:border border-slate-500"><button class="h-full w-full px-4 py-1.5 text-lg md:text-base lg:text-xl">Inscription</button></NuxtLink>
-                <button v-else class="bg-[url(https://picsum.photos/640/640?random=7)] bg-cover h-10 lg:h-14 w-10 lg:w-14 rounded-full border border-slate-500 text-lg md:text-base lg:text-xl"></button>
+                <div v-else class="w-full md:w-auto h-16 md:h-auto flex justify-center items-center bg-slate-950 gap-5"><p class="text-lg md:text-base lg:text-xl">Users</p><button class="bg-[url(https://picsum.photos/640/640?random=7)] bg-cover h-10 lg:h-14 w-10 lg:w-14 rounded-full border border-slate-500 text-lg md:text-base lg:text-xl"></button></div>
             </nav>
         </div>
     </header>
