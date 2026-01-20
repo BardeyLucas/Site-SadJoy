@@ -30,7 +30,7 @@ const items: string[] = [
     <template #default="{ item }">
       <img
         :src="item"
-        class="w-full h-48 object-cover"
+        class="w-full h-[56.25vw] object-cover"
         loading="lazy"
       />
     </template>
