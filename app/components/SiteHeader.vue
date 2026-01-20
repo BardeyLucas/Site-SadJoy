@@ -1,24 +1,27 @@
 <script setup lang="ts">
 import NewLogoPortfolio from './assets/NewLogoPortfolio.vue';
 import HeaderBurger from './assets/HeaderBurger.vue';
-const isOpen = ref(null)
+const isOpen = ref<boolean>(false)
 const user = ref<boolean>(false)
 </script>
 <template>
-    <header class="w-full flex md:px-5 md:bg-slate-950">
-        <nav class="w-full flex items-center justify-between bg-slate-950 h-16 md:h-20 px-5 md:px-0">
+    <header class="w-full flex md:px-5 lg:px-8 md:bg-slate-950 sticky z-10 md:whitespace-nowrap">
+        <nav class="w-full flex items-center justify-between bg-slate-950 h-16 md:h-20 lg:h-28 px-5 md:px-0">
             <div class="flex items-center gap-4">
-                <NewLogoPortfolio class="h-9 md:h-11 w-9 md:w-11"/>
-                <p class="font-semibold text-lg md:text-xl font-josefin mt-auto">FPF Lucas Bardey</p>
+                <NewLogoPortfolio class="h-9 md:h-11 lg:h-14 w-9 md:w-11 lg:w-14"/>
+                <p @click="user = !user" class="font-semibold text-lg md:text-xl lg:text-3xl font-josefin mt-auto">FPF Lucas Bardey</p>
                 <!-- Future Portfolio Features -->
             </div>
-            <HeaderBurger class="h-7 w-7 md:hidden"/>
+            <HeaderBurger @click="isOpen = !isOpen" class="h-7 w-7 md:hidden"/>
         </nav>
-        <nav class="flex gap-5 items-center hidden md:flex">
-            <button v-if="!user" class="bg-slate-700 h-fit px-4 py-1.5 rounded-full border border-slate-500">Connexion</button>
-            <NuxtLink v-else to="/succes" class="text-lg">Succès</NuxtLink>
-            <button @click="user = true" v-if="!user" class="bg-slate-700 h-fit px-4 py-1.5 rounded-full border border-slate-500">Inscription</button>
-            <button v-else class="bg-slate-700 h-10 w-10 rounded-full border border-slate-500"></button>
-        </nav>
+        <div class="w-full md:w-fit absolute flex md:relative">
+            <button @click="isOpen = !isOpen" class="h-[100vh] md:h-fit w-[50vw] md:w-fit hidden" :class="{'!block': isOpen}"></button>
+            <nav class="flex md:gap-5 lg:gap-8 items-center hidden md:flex" :class="{ '!flex flex-col md:flex-row bg-slate-950 h-[100vh] md:h-auto w-[50vw] md:w-auto sticky': isOpen, '!flex-col-reverse md:!flex-row justify-end': isOpen && user}">
+                <NuxtLink v-if="!user" to="/succes" class="md:bg-slate-700 w-full md:w-fit h-16 md:h-fit md:rounded-full border-b md:border border-slate-500"><button class="h-full w-full px-4 py-1.5 text-lg md:text-base lg:text-xl">Connexion</button></NuxtLink>
+                <NuxtLink v-else to="/succes" class="md:bg-slate-700 w-full md:w-fit h-16 md:h-fit md:rounded-full border-b md:border border-slate-500"><button class="h-full w-full px-4 py-1.5 text-lg md:text-base lg:text-xl">Voir mes succès</button></NuxtLink>
+                <NuxtLink v-if="!user" to="/succes" class="md:bg-slate-700 w-full md:w-fit h-16 md:h-fit md:rounded-full border-b md:border border-slate-500"><button class="h-full w-full px-4 py-1.5 text-lg md:text-base lg:text-xl">Inscription</button></NuxtLink>
+                <button v-else class="bg-[url(https://picsum.photos/640/640?random=7)] bg-cover h-10 lg:h-14 w-10 lg:w-14 rounded-full border border-slate-500 text-lg md:text-base lg:text-xl"></button>
+            </nav>
+        </div>
     </header>
 </template>
