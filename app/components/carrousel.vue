@@ -18,12 +18,12 @@ const items: string[] = [
     wheel-gestures
     dots
     :autoplay="{ delay: 8000, stopOnInteraction: false }"
-    class="relative group overflow-hidden rounded-lg"
+    class="relative group overflow-hidden rounded-lg lg:col-span-2 lg:row-span-2"
     :ui="{
       container: 'relative',
       item: 'flex-[0_0_100%]',
       prev:
-        'absolute left-5 top-1/2 -translate-y-1/2 z-10 ' +
+        'absolute left-5 top-1/2 z-10 ring-indigo-600' +
         'hidden md:flex items-center justify-center ' +
         'w-14 h-14 ' +
         'bg-gradient-to-r from-black/70 to-transparent ' +
@@ -31,7 +31,7 @@ const items: string[] = [
         'transition-all duration-300 ' +
         'hover:from-black/90',
       next:
-        'absolute right-5 top-1/2 -translate-y-1/2 z-10 ' +
+        'absolute right-5 top-1/2 z-10 ring-indigo-600' +
         'hidden md:flex items-center justify-center ' +
         'w-14 h-14 ' +
         'bg-gradient-to-l from-black/70 to-transparent ' +
@@ -43,7 +43,7 @@ const items: string[] = [
     <template #default="{ item }">
       <img
         :src="item"
-        class="w-full h-[56.25vw] object-cover"
+        class="w-full h-[56.25vw] lg:h-[432px] object-cover"
         loading="lazy"
       />
     </template>
