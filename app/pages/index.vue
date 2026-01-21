@@ -1,4 +1,4 @@
 <template>
-    <h1>SadJoy</h1>
     <carrousel/>
+    <h1>SadJoy</h1>
 </template>
