@@ -1,9 +1,11 @@
 <template>
     <header class="lg:grid lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] gap-y-5 gap-x-10 p-5">
-    <carrousel/>
+    <section class="lg:col-span-2 lg:row-span-2">
+        <carrousel/>
+        <h1 class="font-josefin font-bold text-3xl mt-5 w-full bg-gray-700 pt-3 pb-1 px-3 rounded-lg">Sad Joy</h1>
+    </section>
     <section class="lg:col-span-1 lg:col-start-3 lg:row-span-3 lg:row-start-1 lg:flex lg:flex-col">
-        <h1 class="font-josefin font-bold text-xl mt-5 lg:mt-0">Sad Joy</h1>
-        <article class="my-5 border border-indigo-700 rounded-lg overflow-hidden shadow-md">
+        <article class="my-5 lg:mt-0 border border-indigo-700 rounded-lg overflow-hidden shadow-md">
             <div class="bg-indigo-800 p-5">
                 <h2 class="text-lg font-semibold">Jeu en accès anticipé</h2>
                 <p class="mt-2">
@@ -66,14 +68,14 @@
         </div>
     </section>
     </header>
-    <section class="lg:flex gap-10 p-5">
+    <section class="lg:flex gap-x-20 gap-y-16 p-5">
         <div class="lg:flex-1">
             <h2 class="text-lg font-semibold">À propos de ce jeu</h2>
-            <img src="https://picsum.photos/640/640?random=7" alt="Aperçu du jeu Sad Joy" class="w-full h-[25vw] mt-5 rounded-lg shadow-md"/>
+            <img src="https://picsum.photos/640/640?random=7" alt="Aperçu du jeu Sad Joy" class="w-full aspect-[16/9] object-cover mt-5 rounded-lg shadow-md"/>
             <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget tortor nec justo sagittis ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed at libero nec lorem consequat tincidunt. Integer non magna vitae eros volutpat viverra. Curabitur ac elit vel nulla pulvinar commodo.</p>
             <p class="mt-2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse potenti. Aenean vehicula, lorem at convallis faucibus, risus magna posuere purus, sed tempor justo nisi vitae magna.</p>
             <h3 class="mt-8 text-lg font-semibold">Gameplay dynamique et exigeant</h3>
-            <img src="https://picsum.photos/640/640?random=8" alt="Aperçu du jeu Sad Joy" class="w-full h-[25vw] mt-5 rounded-lg shadow-md"/>
+            <img src="https://picsum.photos/640/640?random=8" alt="Aperçu du jeu Sad Joy" class="w-full aspect-[16/9] object-cover mt-5 rounded-lg shadow-md"/>
             <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus, sapien nec tincidunt posuere, magna sem efficitur lorem, id placerat nulla sapien id odio. Praesent euismod, orci non facilisis faucibus, tortor libero consequat metus, non tincidunt urna nisl at libero.</p>
             <ul class="mt-2 list-disc ml-5">
                 <li>Lorem ipsum dolor sit amet</li>
@@ -82,18 +84,18 @@
             </ul>
             <p class="mt-2">Nam eget massa vitae mauris dignissim tincidunt. Integer a arcu sed est aliquet hendrerit. Duis nec justo nec lectus pharetra commodo.</p>
             <h3 class="mt-8 text-lg font-semibold">Un univers 2D riche et immersif</h3>
-            <img src="https://picsum.photos/640/640?random=9" alt="Aperçu du jeu Sad Joy" class="w-full h-[25vw] mt-5 rounded-lg shadow-md"/>
+            <img src="https://picsum.photos/640/640?random=9" alt="Aperçu du jeu Sad Joy" class="w-full aspect-[16/9] object-cover mt-5 rounded-lg shadow-md"/>
             <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id sapien nec magna ultrices volutpat. Morbi dignissim, lorem sed luctus efficitur, magna sapien consequat turpis, nec interdum libero urna at sapien.</p>
             <p class="mt-2">Vivamus at velit nec purus volutpat scelerisque. Aliquam erat volutpat. Fusce non nulla sed nisl bibendum feugiat nec vitae magna.</p>
             <h3 class="mt-8 text-lg font-semibold">Êtes-vous prêt à relever le défi ?</h3>
-            <img src="https://picsum.photos/640/640?random=10" alt="Aperçu du jeu Sad Joy" class="w-full h-[25vw] mt-5 rounded-lg shadow-md"/>
+            <img src="https://picsum.photos/640/640?random=10" alt="Aperçu du jeu Sad Joy" class="w-full aspect-[16/9] object-cover mt-5 rounded-lg shadow-md"/>
             <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, neque sit amet dapibus interdum, sapien lorem placerat metus, at vulputate lorem lorem sed erat. Cras non libero ut risus fermentum pretium.</p>
         </div>
         <div class="lg:flex-1">
             <h2 class="text-lg font-semibold">Note de mise à jour</h2>
             <div class="w-full bg-gray-900 border border-gray-950 rounded-lg p-4 shadow-md mt-4">
                 <h3 class="text-lg font-semibold">Notes de mise à jour — Version 0.3.1</h3>
-                <img src="https://picsum.photos/640/640?random=11" alt="Aperçu du jeu Sad Joy" class="w-full h-[25vw] mt-5 rounded-lg shadow-md"/>
+                <img src="https://picsum.photos/640/640?random=11" alt="Aperçu du jeu Sad Joy" class="w-full aspect-[16/9] object-cover mt-5 rounded-lg shadow-md"/>
                 <h4 class="mt-4 font-semibold">Changements généraux</h4>
                 <p class="mt-2 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Donec vel magna nec ipsum tempor malesuada. Integer euismod, lorem sed tincidunt elementum, arcu sapien luctus est, nec ultrices erat magna vitae metus.</p>
                 <h4 class="mt-4 font-semibold">Gameplay</h4>
@@ -115,7 +117,7 @@
             </div>
             <div class="w-full bg-gray-900 border border-gray-950 rounded-lg p-4 shadow-md mt-4">
                 <h3 class="text-lg font-semibold">Notes de mise à jour — Version 0.3.0</h3>
-                <img src="https://picsum.photos/640/640?random=12" alt="Aperçu du jeu Sad Joy" class="w-full h-[25vw] mt-5 rounded-lg shadow-md"/>
+                <img src="https://picsum.photos/640/640?random=12" alt="Aperçu du jeu Sad Joy" class="w-full aspect-[16/9] object-cover mt-5 rounded-lg shadow-md"/>
                 <h4 class="mt-4 font-semibold">Nouveautés</h4>
                 <p class="mt-2 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
                 <h4 class="mt-4 font-semibold">Améliorations</h4>

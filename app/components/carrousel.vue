@@ -18,7 +18,7 @@ const items: string[] = [
     wheel-gestures
     dots
     :autoplay="{ delay: 8000, stopOnInteraction: false }"
-    class="relative group overflow-hidden rounded-lg lg:col-span-2 lg:row-span-2"
+    class="relative group overflow-hidden rounded-lg"
     :ui="{
       container: 'relative',
       item: 'flex-[0_0_100%]',
@@ -43,7 +43,7 @@ const items: string[] = [
     <template #default="{ item }">
       <img
         :src="item"
-        class="w-full h-[56.25vw] lg:h-[432px] object-cover"
+        class="w-full aspect-[16/9] object-cover object-cover"
         loading="lazy"
       />
     </template>
