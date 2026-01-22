@@ -2,7 +2,7 @@
     <header class="lg:grid lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] gap-y-5 gap-x-10 p-5">
     <section class="lg:col-span-2 lg:row-span-2">
         <carrousel/>
-        <h1 class="font-josefin font-bold text-3xl mt-5 w-full bg-gray-700 pt-3 pb-1 px-3 rounded-lg">Sad Joy</h1>
+        <h1 class="font-josefin font-bold text-3xl mt-5 w-full bg-slate-700 pt-3 pb-1 px-3 rounded-lg">Sad Joy</h1>
     </section>
     <section class="lg:col-span-1 lg:col-start-3 lg:row-span-3 lg:row-start-1 lg:flex lg:flex-col">
         <article class="my-5 lg:mt-0 border border-indigo-700 rounded-lg overflow-hidden shadow-md">
