@@ -1,6 +1,6 @@
 <template>
     <section class="p-5">
-        <h1 class="text-2xl font-semibold">Politique de confidentialité</h1>
+        <h1 class="text-2xl font-semibold">Statistiques et succès</h1>
         <div class="bg-slate-700 p-3 mt-5 rounded-lg">
             <div class="flex justify-between items-center">
                 <h2>Succès remportés : 0/10</h2>
@@ -13,7 +13,10 @@
         <section class="bg-slate-900 p-3 mt-5 rounded-lg">
             <div class="flex gap-2 items-center mt-2">
                 <div class="w-10 h-10 bg-orange-500 rounded border border-slate-700"></div>
-                <h2 class="text-lg font-semibold">Sad Joy</h2>
+                <h2 class="text-xl font-semibold">Sad Joy</h2>
+            </div>
+            <div class="flex items-center bg-slate-950 border border-slate-800 rounded-lg p-3 mt-5">
+                <h3 class="text-lg font-semibold">Statistiques</h3>
             </div>
             <div class="flex gap-3 flex-wrap mt-5">
                 <button class="bg-slate-800 hover:bg-slate-700 active:bg-slate-600 border-slate-600 hover:border-slate-500 active:border-slate-400 w-fit rounded-full border px-2 py-1 text-base">Tout les succès</button>
