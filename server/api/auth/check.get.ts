@@ -1,11 +1,11 @@
 // server/api/auth/check.get.ts
-import { defineEventHandler, getCookie, createError } from 'h3'
+import { defineEventHandler, getCookie } from 'h3'
 import * as PlayFabSdk from 'playfab-sdk'
 
 export default defineEventHandler(async (event) => {
   // Récupération du SessionTicket depuis le cookie
    const playFabId = getCookie(event, 'PLAYFAB_ID')
-  if (!playFabId) return { user: false, pseudo: '' }
+  if (!playFabId) return { user: false, pseudo: '', email: '' }
 
 
   // ⚡ Configuration PlayFab
@@ -26,10 +26,11 @@ export default defineEventHandler(async (event) => {
         )
     })
     const pseudo = accountInfo?.data?.AccountInfo?.Username || ''
-    return { user: true, pseudo }
+    const email = accountInfo?.data?.AccountInfo?.PrivateInfo?.Email || ''
+    return { user: true, pseudo, email }
     } catch (err: any) {
     // ⚡ seulement log si playFabId existait
     if (playFabId) console.warn('Erreur PlayFab checkAuth:', err)
-    return { user: false, pseudo: '' }
+    return { user: false, pseudo: '', email: '' }
     }
 })

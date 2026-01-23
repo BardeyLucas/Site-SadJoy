@@ -44,7 +44,8 @@ export default defineEventHandler(async (event) => {
     success: true,
     player: {
       playFabId: result.data.PlayFabId,
-      pseudo: result.data.InfoResultPayload?.PlayerProfile?.DisplayName ?? 'Player'
+      pseudo: result.data.InfoResultPayload?.PlayerProfile?.DisplayName ?? 'Player',
+      email: result.data.InfoResultPayload?.PlayerProfile?.Email ?? 'Email'
     }
   }
 })

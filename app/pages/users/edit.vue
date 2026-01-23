@@ -19,6 +19,8 @@ const logout = async () => {
   }
 }
 
+
+
 </script>
 <template>
     <section class="flex border border-slate-950">
@@ -46,7 +48,7 @@ const logout = async () => {
             </header>
             <section class="flex flex-col mt-5 bg-slate-900 p-5 rounded-lg">
                 <label for="email" class="font-semibold">Email</label>
-                <div v-if="!ModifMail" class="flex items-center h-fit opacity-55"><p class="p-2 pr-1 font-light">Denki.kaminari@example.com</p><AssetsIconPen @click="ModifMail = !ModifMail" class="w-6 h-6 p-1 rounded-full bg-white bg-opacity-0 hover:bg-opacity-10 active:bg-opacity-20"/></div>
+                <div v-if="!ModifMail" class="flex items-center h-fit opacity-55"><p class="p-2 pr-1 font-light">{{ email }}</p><AssetsIconPen @click="ModifMail = !ModifMail" class="w-6 h-6 p-1 rounded-full bg-white bg-opacity-0 hover:bg-opacity-10 active:bg-opacity-20"/></div>
                 <form v-if="ModifMail" action="" class="flex flex-wrap">
                     <input type="email" id="email" name="email" class="mt-2 ml-2 bg-slate-600 border border-slate-500 rounded">
                     <div class="flex gap-2 mt-2 mx-2">
