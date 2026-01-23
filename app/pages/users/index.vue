@@ -1,3 +1,18 @@
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+import { logout as logoutUser } from '~/composables/useAuth' // ⚡ le composable
+const router = useRouter()
+
+// ⚡ nouvelle fonction qui utilise le composable
+const logout = async () => {
+  try {
+    await logoutUser() // ⚡ met user.value à false et supprime le cookie côté serveur
+    router.push('/connexion')
+  } catch (err) {
+    console.error('Erreur lors de la déconnexion', err)
+  }
+}
+</script>
 <template>
     <section class="flex border border-slate-950">
         <section class="flex-1 p-5">
@@ -13,7 +28,14 @@
                                 <p class="font-bold font-xl">10</p>
                             </div>
                         </div>
-                        <RouterLink to="/users/edit"><button class="mt-4 bg-indigo-800 text-white px-3 py-1.5 rounded-sm">Paramètres</button></RouterLink>
+                        <div>
+                            <RouterLink to="/users/edit"><button class="mt-4 bg-indigo-800 text-white px-3 py-1.5 rounded-sm">Paramètres</button></RouterLink>
+                            <button 
+                                @click="logout"
+                                class="bg-gray-900 hover:bg-gray-700 active:bg-gray-600 text-white px-3 py-1.5 rounded-sm m-5">
+                                Ce déconnecter
+                            </button>   
+                        </div>
                     </nav>
                 </div>
             </header>
@@ -33,7 +55,7 @@
                 </div>
             </section>
         </section>
-        <nav class="bg-slate-900 w-fit flex flex-col justify-between hidden md:block">
+        <nav class="bg-slate-900 w-fit hidden md:flex flex-col justify-between">
             <div class="p-5">
                 <div class="flex gap-2 items-center">
                     <p>Nombre de succès obtenu : </p>
@@ -43,6 +65,11 @@
                 </div>
                 <RouterLink to="/users/edit"><button class="mt-6 bg-indigo-800 text-white px-3 py-1.5 rounded-sm">Paramètres</button></RouterLink>
             </div>
+            <button 
+                @click="logout"
+                class="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white px-3 py-1.5 rounded-sm m-5">
+                Ce déconnecter
+            </button>        
         </nav>
     </section>
 </template>
