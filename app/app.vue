@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import { checkAuth } from '~/composables/useAuth'
+const router = useRouter()
+
+router.afterEach(() => {
+  checkAuth()
+})
+
+</script>
 <template>
   <SiteHeader />
     <main>

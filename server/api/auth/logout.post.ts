@@ -1,15 +1,13 @@
-// /server/api/auth/logout.post.ts
 import { defineEventHandler, setCookie } from 'h3'
 
-export default defineEventHandler(async (event) => {
-  // Supprime le cookie de session
-  setCookie(event, process.env.SESSION_COOKIE_NAME!, '', {
+export default defineEventHandler((event) => {
+  setCookie(event, 'PLAYFAB_ID', '', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     path: '/',
-    maxAge: 0, // expiration immédiate
+    maxAge: 0 // 💥 suppression réelle
   })
 
-  return { success: true, message: 'Déconnecté' }
+  return { success: true }
 })

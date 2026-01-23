@@ -2,28 +2,12 @@
 import NewLogoPortfolio from './assets/NewLogoPortfolio.vue';
 import HeaderBurger from './assets/HeaderBurger.vue';
 const isOpen = ref<boolean>(false)
-import { ref, onMounted } from 'vue'
-import { user, pseudo, checkAuth  } from '~/composables/useAuth'
-
-onMounted(async () => {
-  try {
-    const { data } = await useFetch('/api/auth/check', {
-      method: 'GET',
-      credentials: 'include' // ✅ envoie les cookies httpOnly
-    })
-
-    // Si la requête réussit => connecté
-    user.value = true
-  } catch (err) {
-    // Si erreur (ex: 401), pas connecté
-    user.value = false
-  }
-  await checkAuth()
-})
+import { ref } from 'vue'
+import { user, pseudo  } from '~/composables/useAuth'
 
 </script>
 <template>
-    <header class="w-full flex md:px-5 lg:px-8 md:bg-slate-950 fixed z-10 md:whitespace-nowrap top-0">
+    <header class="w-full flex md:px-5 lg:px-8 md:bg-slate-950 fixed z-20 md:whitespace-nowrap top-0">
         <nav class="w-full flex items-center justify-between bg-slate-950 h-16 md:h-20 lg:h-28 px-5 md:px-0">
             <RouterLink to="/" class="flex items-center gap-4">
                 <NewLogoPortfolio class="h-9 md:h-11 lg:h-14 w-9 md:w-11 lg:w-14"/>

@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { user, pseudo } from '~/composables/useAuth' // ⚡ on importe l'état global
 
+interface InscriptionResponse {
+  player: {
+    pseudo: string
+  }
+}
+
 const router = useRouter()
 
+const formPseudo = ref('')
 const email = ref('')
 const motdepasse = ref('')
 const loading = ref(false)
@@ -17,28 +24,29 @@ const submitForm = async () => {
   loading.value = true
 
   try {
-    await $fetch('/api/auth/register', {
-      method: 'POST',
-      body: {
-        pseudo: pseudo.value,
-        email: email.value,
-        password: motdepasse.value
-      },
-      credentials: 'include' // ✅ pour envoyer les cookies httpOnly
-    })
+    const res = await $fetch<InscriptionResponse>('/api/auth/register', {
+        method: 'POST',
+        body: {
+            pseudo: formPseudo.value,
+            email: email.value,
+            password: motdepasse.value
+        },
+        credentials: 'include'
+        })
 
     success.value = true
 
     // ⚡ Met à jour l'état global pour le header
     user.value = true
-    pseudo.value = 'PseudoDeLUtilisateur'
+    pseudo.value = res.player.pseudo
 
     // Vider les champs
-    pseudo.value = ''
+    formPseudo.value = ''
     email.value = ''
     motdepasse.value = ''
 
     // Redirection vers la page principale ou tableau de bord
+    await nextTick()
     router.push('/') 
   } catch (err: any) {
     error.value =

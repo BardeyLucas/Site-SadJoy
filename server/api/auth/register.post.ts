@@ -1,4 +1,4 @@
-import { defineEventHandler, readBody, createError } from 'h3'
+import { defineEventHandler, readBody, setCookie, createError } from 'h3'
 import * as PlayFabSdk from 'playfab-sdk'
 
 export default defineEventHandler(async (event) => {
@@ -31,6 +31,14 @@ export default defineEventHandler(async (event) => {
       (err: any, res: any) => err ? reject(err) : resolve(res)
     )
   })
+
+    setCookie(event, 'PLAYFAB_ID', result.data.PlayFabId, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 60 * 60 * 24
+    })
 
   return {
     success: true,

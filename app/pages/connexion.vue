@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, nextTick  } from 'vue'
 import { useRouter } from 'vue-router'
 import { user, pseudo } from '~/composables/useAuth' // ⚡ on importe l'état global
 
@@ -33,6 +33,7 @@ const submitForm = async () => {
     user.value = true
     pseudo.value = res.player.pseudo
 
+    await nextTick()
     router.push('/') // ou la page de ton choix
   } catch (err: any) {
     error.value =

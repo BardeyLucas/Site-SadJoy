@@ -31,13 +31,14 @@ export default defineEventHandler(async (event) => {
   })
 
   // Stockage du SessionTicket en cookie httpOnly
-  setCookie(event, process.env.SESSION_COOKIE_NAME!, result.data.SessionTicket, {
+  setCookie(event, 'PLAYFAB_ID', result.data.PlayFabId, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     path: '/',
     maxAge: 60 * 60 * 24
-  })
+    })
+
 
   return {
     success: true,
