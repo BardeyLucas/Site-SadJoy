@@ -19,7 +19,7 @@ const logout = async () => {
             <header class="flex">
                 <div class="bg-orange-500 h-32 sm:h-40 w-32 sm:w-40 border-2 border-slate-600"></div>
                 <div class="flex flex-col p-5 pt-0 sm:p-5 ">
-                    <h1 class="text-2xl font-light break-words">Denki kaminari</h1>
+                    <h1 class="text-2xl font-light break-words capitalize">{{ pseudo }}</h1>
                     <nav class="block md:hidden mt-2">
                         <div class="flex gap-2 items-center">
                             <p class="hidden sm:block">Nombre de succès obtenu : </p>

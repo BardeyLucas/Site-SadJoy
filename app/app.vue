@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { checkAuth } from '~/composables/useAuth'
+
 const router = useRouter()
+
+onMounted(() => {
+  checkAuth()
+})
 
 router.afterEach(() => {
   checkAuth()
 })
-
 </script>
 <template>
   <SiteHeader />

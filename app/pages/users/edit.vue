@@ -31,7 +31,7 @@ const logout = async () => {
                     </div>
                 </div>
                 <div class="flex flex-col p-5 pt-0 sm:p-5 ">
-                    <div v-if="!ModifName" class="flex items-center h-fit w-fit gap-1"><h2 class="text-2xl font-light self-start w-fit break-words">Denki kaminari</h2><AssetsIconPen @click="ModifName = !ModifName" class="w-8 h-8 p-1 rounded-full bg-white bg-opacity-0 hover:bg-opacity-10 active:bg-opacity-20"/></div>
+                    <div v-if="!ModifName" class="flex items-center h-fit w-fit gap-1"><h2 class="text-2xl font-light self-start w-fit break-words capitalize">{{ pseudo }}</h2><AssetsIconPen @click="ModifName = !ModifName" class="w-8 h-8 p-1 rounded-full bg-white bg-opacity-0 hover:bg-opacity-10 active:bg-opacity-20"/></div>
                     <nav class="block md:hidden mt-2">
                         <RouterLink to="/users/edit"><button class="mt-4 bg-indigo-800 text-white px-3 py-1.5 rounded-sm">Enregistrer les modifications</button></RouterLink>
                     </nav>
