@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { user } from '~/composables/useAuth' // ⚡ on importe l'état global
+import { user, pseudo } from '~/composables/useAuth' // ⚡ on importe l'état global
 
 const router = useRouter()
 
-const pseudo = ref('')
 const email = ref('')
 const motdepasse = ref('')
 const loading = ref(false)
@@ -32,6 +31,7 @@ const submitForm = async () => {
 
     // ⚡ Met à jour l'état global pour le header
     user.value = true
+    pseudo.value = 'PseudoDeLUtilisateur'
 
     // Vider les champs
     pseudo.value = ''

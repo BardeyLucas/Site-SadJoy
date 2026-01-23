@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { user } from '~/composables/useAuth' // ⚡ on importe l'état global
+import { user, pseudo } from '~/composables/useAuth' // ⚡ on importe l'état global
+
+interface LoginResponse {
+  player: {
+    pseudo: string
+  }
+}
 
 const router = useRouter()
 
-const pseudo = ref('')
 const email = ref('')
 const motdepasse = ref('')
 const loading = ref(false)
@@ -15,10 +20,9 @@ const submitForm = async () => {
   error.value = null
   loading.value = true
   try {
-    await $fetch('/api/auth/login', {
+    const res = await $fetch<LoginResponse>('/api/auth/login', {
       method: 'POST',
       body: {
-        pseudo: pseudo.value,
         email: email.value,
         password: motdepasse.value
       },
@@ -27,6 +31,7 @@ const submitForm = async () => {
 
     // ⚡ on met user.value à true dès que la connexion est OK
     user.value = true
+    pseudo.value = res.player.pseudo
 
     router.push('/') // ou la page de ton choix
   } catch (err: any) {
