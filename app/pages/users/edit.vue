@@ -5,6 +5,8 @@ import { logout as logoutUser } from '~/composables/useAuth' // ⚡ le composabl
 import { pseudo as pseudoRef } from '~/composables/useAuth'
 import { avatar as avatarRef } from '~/composables/useAuth'
 import SecurityPopUp from '~/components/SecurityPopUp.vue'
+const showReauthPopup = ref(false)
+
 
 const router = useRouter()
 
@@ -201,8 +203,8 @@ const onSecurityValidated = () => {
             </div>
         </nav>
     </section>
-    <SecurityPopUp
-      v-model:show="showSecurityPopup"
-      @validated="onSecurityValidated"
+    <SecurityPopUp 
+      v-model="showReauthPopup" 
+      @validated="onSecurityValidated" 
     />
     </template>
