@@ -63,7 +63,6 @@ if (draftAvatarFile.value) {
   })
 
   // ⚡ on stocke l'URL définitive
-  originalAvatar.value = res.avatarUrl
   avatarRef.value = res.avatarUrl // pour le header
   draftAvatarPreview.value = null
   draftAvatarFile.value = null
@@ -71,6 +70,7 @@ if (draftAvatarFile.value) {
 
 
     hasChanges.value = false
+    router.push('/users')
   } catch (err) {
     errorSave.value = 'Erreur lors de la sauvegarde'
   } finally {
@@ -102,10 +102,10 @@ const onSelectAvatar = (event: Event) => {
         <section class="flex-1 p-5">
             <h1 class="text-2xl font-semibold bg-slate-900 w-fit h-fit px-4 py-2 rounded-sm rounded-xl">Mode d'édition</h1>
             <header class="flex mt-5">
-                <div class="relative bg-orange-500 h-32 w-32 border-2 border-slate-600">
-  <img
-  v-if="draftAvatarPreview || originalAvatar"
-  :src="(draftAvatarPreview || originalAvatar) ?? undefined"
+                <div class="relative bg-slate-900 h-32 w-32 border-2 border-slate-600">
+<img
+  v-if="draftAvatarPreview || avatarRef"
+  :src="draftAvatarPreview || avatarRef"
   class="absolute inset-0 w-full h-full object-cover"
 />
 

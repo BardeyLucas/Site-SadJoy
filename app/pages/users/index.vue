@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { logout as logoutUser } from '~/composables/useAuth' // ⚡ le composable
+import { logout as logoutUser, avatar as avatarRef, pseudo as pseudoRef } from '~/composables/useAuth'
 const router = useRouter()
 
 // ⚡ nouvelle fonction qui utilise le composable
@@ -12,12 +12,23 @@ const logout = async () => {
     console.error('Erreur lors de la déconnexion', err)
   }
 }
+
+// ⚡ valeurs réactives
+const avatar = avatarRef
+const pseudo = pseudoRef
 </script>
 <template>
     <section class="flex border border-slate-950">
         <section class="flex-1 p-5">
             <header class="flex">
-                <div class="bg-orange-500 h-32 sm:h-40 w-32 sm:w-40 border-2 border-slate-600"></div>
+                <div class="bg-slate-900 h-32 sm:h-40 w-32 sm:w-40 border-2 border-slate-600 overflow-hidden">
+                    <img 
+                        v-if="avatar"
+                        :src="avatar" 
+                        alt="Avatar utilisateur"
+                        class="w-full h-full object-cover"
+                    />
+                </div>                
                 <div class="flex flex-col p-5 pt-0 sm:p-5 ">
                     <h1 class="text-2xl font-light break-words capitalize">{{ pseudo }}</h1>
                     <nav class="block md:hidden mt-2">
