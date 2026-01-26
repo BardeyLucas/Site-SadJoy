@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { logout as logoutUser } from '~/composables/useAuth' // ⚡ le composable
 import { pseudo as pseudoRef } from '~/composables/useAuth'
 import { avatar as avatarRef } from '~/composables/useAuth'
+import SecurityPopUp from '~/components/SecurityPopUp.vue'
 
 const router = useRouter()
 
@@ -20,6 +21,16 @@ const errorSave = ref('')
 const originalAvatar = ref<string | null>(avatarRef.value || null) // valeur serveur
 const draftAvatarFile = ref<File | null>(null) // fichier choisi
 const draftAvatarPreview = ref<string | null>(null) // preview locale
+
+const showSecurityPopup = ref(false)
+const pendingChange = ref<'email' | 'mdp' | null>(null)
+
+const requestSensitiveChange = (type: 'email' | 'mdp') => {
+  showSecurityPopup.value = true
+  // tu peux stocker le type si tu veux savoir après quoi changer
+  pendingChange.value = type
+}
+
 
 // ⚡ nouvelle fonction qui utilise le composable
 const logout = async () => {
@@ -93,9 +104,15 @@ const onSelectAvatar = (event: Event) => {
   hasChanges.value = true
 }
 
-
-
-
+const onSecurityValidated = () => {
+  showSecurityPopup.value = false
+  if (pendingChange.value === 'email') {
+    ModifMail.value = true
+  } else if (pendingChange.value === 'mdp') {
+    ModifMDP.value = true
+  }
+  pendingChange.value = null
+}
 </script>
 <template>
     <section class="flex border border-slate-950">
@@ -133,7 +150,7 @@ const onSelectAvatar = (event: Event) => {
                       <input
                         v-model="draftPseudo"
                         type="text"
-                        :placeholder="draftPseudo || 'Nouveau pseudo'"
+                        :placeholder="draftPseudo || pseudo || 'Nouveau pseudo'"
                         class="mt-2 mr-2 px-2 bg-slate-600 border border-slate-500 rounded"
                       />
 
@@ -152,7 +169,7 @@ const onSelectAvatar = (event: Event) => {
             </header>
             <section class="flex flex-col mt-5 bg-slate-900 p-5 rounded-lg">
                 <label for="email" class="font-semibold">Email</label>
-                <div v-if="!ModifMail" class="flex items-center h-fit opacity-55"><p class="p-2 pr-1 font-light">{{ email }}</p><AssetsIconPen @click="ModifMail = !ModifMail" class="w-6 h-6 p-1 rounded-full bg-white bg-opacity-0 hover:bg-opacity-10 active:bg-opacity-20"/></div>
+                <div v-if="!ModifMail" class="flex items-center h-fit opacity-55"><p class="p-2 pr-1 font-light">{{ email }}</p><AssetsIconPen @click="ModifMail = !ModifMail; requestSensitiveChange('email')" class="w-6 h-6 p-1 rounded-full bg-white bg-opacity-0 hover:bg-opacity-10 active:bg-opacity-20"/></div>
                 <form v-if="ModifMail" action="" class="flex flex-wrap">
                     <input type="email" id="email" name="email" class="mt-2 ml-2 bg-slate-600 border border-slate-500 rounded">
                     <div class="flex gap-2 mt-2 mx-2">
@@ -162,7 +179,7 @@ const onSelectAvatar = (event: Event) => {
                 </form>
                 <label for="motdepasse" class="mt-5 font-semibold">Mot de passe</label>
                 <!-- <input type="text" id="motdepasse" name="motdepasse" class="mt-2 bg-slate-600 border border-slate-50 rounded"> -->
-                <div v-if="!ModifMDP" class="flex items-center h-fit opacity-55"><p class="p-2 pr-1 font-light">••••••••</p><AssetsIconPen @click="ModifMDP = !ModifMDP" class="w-6 h-6 p-1 rounded-full bg-white bg-opacity-0 hover:bg-opacity-10 active:bg-opacity-20"/></div>
+                <div v-if="!ModifMDP" class="flex items-center h-fit opacity-55"><p class="p-2 pr-1 font-light">••••••••</p><AssetsIconPen @click="ModifMDP = !ModifMDP; requestSensitiveChange('mdp')" class="w-6 h-6 p-1 rounded-full bg-white bg-opacity-0 hover:bg-opacity-10 active:bg-opacity-20"/></div>
                 <form v-if="ModifMDP" action="" class="flex flex-wrap">
                     <input type="email" id="email" name="email" class="mt-2 ml-2 bg-slate-600 border border-slate-500 rounded">
                     <div class="flex gap-2 mt-2 mx-2">
@@ -184,4 +201,8 @@ const onSelectAvatar = (event: Event) => {
             </div>
         </nav>
     </section>
-</template>
+    <SecurityPopUp
+      v-model:show="showSecurityPopup"
+      @validated="onSecurityValidated"
+    />
+    </template>
