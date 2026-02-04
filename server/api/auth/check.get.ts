@@ -6,8 +6,8 @@ export default defineEventHandler(async (event) => {
   if (!playFabId) return { user: false, pseudo: '', email: '' }
 
   PlayFabSdk.PlayFab.settings = {
-    titleId: process.env.PLAYFAB_TITLE_ID || '',
-    developerSecretKey: process.env.PLAYFAB_DEV_SECRET_KEY,
+    titleId: process.env.PLAYFAB_TITLE_ID!,
+    developerSecretKey: process.env.PLAYFAB_DEV_SECRET!,
     productionUrl: 'https://107067.playfabapi.com',
     verticalName: ''
   }

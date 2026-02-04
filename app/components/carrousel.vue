@@ -1,12 +1,40 @@
 <script setup lang="ts">
-const items: string[] = [
-  'https://picsum.photos/640/640?random=1',
-  'https://picsum.photos/640/640?random=2',
-  'https://picsum.photos/640/640?random=3',
-  'https://picsum.photos/640/640?random=4',
-  'https://picsum.photos/640/640?random=5',
-  'https://picsum.photos/640/640?random=6'
-]
+import { ref, onMounted } from 'vue'
+import groq from 'groq'
+import type { Game } from '@/types/game'
+import { useSanityClient } from '~/composables/sanity'
+import { h } from 'vue'
+import { computed } from 'vue'
+
+const client = useSanityClient()
+const games = ref<Game | null>(null)
+
+const gameId = '0dfb417a-40fd-433c-a6d5-e690d24444b7'
+
+const gamesQuery = groq`
+  *[_type == "game" && _id == $id][0]{
+    _id,
+    "mainImages": mainImages[]{
+      _type,
+      asset->{_id, url},
+      alt,
+      caption
+    }
+  }
+`
+
+onMounted(async () => {
+  games.value = await client.fetch(gamesQuery, { id: gameId })
+})
+
+const items = computed<string[]>(() => {
+  if (!games.value?.mainImages) return []
+
+  return games.value.mainImages
+    .map(image => image.asset?.url)
+    .filter(Boolean)
+})
+
 </script>
 
 <template>

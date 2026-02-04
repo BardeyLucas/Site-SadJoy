@@ -39,13 +39,6 @@ export const gameType = defineType({
     }),
 
     defineField({
-      name: 'progressNote',
-      title: "Remarque sur l'avancement",
-      type: 'text',
-      rows: 3,
-    }),
-
-    defineField({
       name: 'faq',
       title: 'Questions / Réponses',
       type: 'array',
@@ -141,18 +134,39 @@ export const gameType = defineType({
     }),
 
     defineField({
-      name: 'updateNotes',
-      title: 'Notes de mise à jour',
-      type: 'array',
-      of: [
-        {type: 'block'},
-        {
-            type: 'image',
-            options: {
-                hotspot: true,
+        name: 'updateNotes',
+        title: 'Notes de mise à jour',
+        type: 'array',
+        of: [
+            {
+            type: 'object',
+            title: 'Note',
+            fields: [
+                {
+                name: 'content',
+                title: 'Contenu',
+                type: 'array',
+                of: [
+                    { type: 'block' },
+                    { 
+                    type: 'image', 
+                    options: { hotspot: true } 
+                    }
+                ],
+                },
+                {
+                name: 'version',
+                title: 'Version',
+                type: 'string',
+                },
+                {
+                name: 'date',
+                title: 'Date de publication',
+                type: 'datetime',
+                },
+              ],
             },
-          },
         ],
-    }),
+    })
   ],
 })
