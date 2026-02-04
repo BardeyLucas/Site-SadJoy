@@ -2,12 +2,6 @@ import { defineEventHandler, getCookie } from 'h3'
 import * as PlayFabSdk from 'playfab-sdk'
 
 export default defineEventHandler(async (event) => {
-
-    // 🔹 Debug des variables d'environnement
-  console.log('PLAYFAB_TITLE_ID:', process.env.PLAYFAB_TITLE_ID ? 'OK' : 'MISSING')
-  console.log('PLAYFAB_DEV_SECRET_KEY:', process.env.PLAYFAB_DEV_SECRET_KEY ? 'OK' : 'MISSING')
-  console.log('SESSION_COOKIE_NAME:', process.env.SESSION_COOKIE_NAME ? 'OK' : 'MISSING')
-
   const playFabId = getCookie(event, 'SESSION_COOKIE_NAME')
   if (!playFabId) return { user: false, pseudo: '', email: '' }
 
