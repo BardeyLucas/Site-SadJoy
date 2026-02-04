@@ -51,7 +51,7 @@ const submitForm = async () => {
   } catch (err: any) {
     error.value =
       err?.data?.statusMessage ??
-      'Erreur lors de l’inscription'
+      router.push('/') 
   } finally {
     loading.value = false
   }
@@ -64,11 +64,11 @@ const submitForm = async () => {
     <h1 class="text-2xl font-bold w-fit">Inscription</h1>
 
     <form class="flex flex-col" @submit.prevent="submitForm">
-      <label for="pseudo" class="mt-5 font-semibold">Pseudo</label>
+      <label for="formPseudo" class="mt-5 font-semibold">Pseudo</label>
       <input
-        v-model="pseudo"
+        v-model="formPseudo"
         type="text"
-        id="pseudo"
+        id="formPseudo"
         class="mt-2 bg-slate-600 border border-slate-50 rounded"
         required
       >

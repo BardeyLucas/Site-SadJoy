@@ -4,7 +4,6 @@ import { useRouter } from 'vue-router'
 import { logout as logoutUser } from '~/composables/useAuth' // ⚡ le composable
 import { pseudo as pseudoRef } from '~/composables/useAuth'
 import { avatar as avatarRef } from '~/composables/useAuth'
-import SecurityPopUp from '~/components/SecurityPopUp.vue'
 const showReauthPopup = ref(false)
 
 
@@ -115,6 +114,30 @@ const onSecurityValidated = () => {
   }
   pendingChange.value = null
 }
+
+const showDeletePopup = ref(false)
+const deletingAccount = ref(false)
+const deleteError = ref('')
+
+const deleteAccount = async () => {
+  deletingAccount.value = true
+  deleteError.value = ''
+
+  try {
+    await $fetch('/api/player/delete-account-post', {
+      method: 'POST',
+      credentials: 'include'
+    })
+
+    // Déconnexion après suppression
+    await logout()
+  } catch (err: any) {
+    deleteError.value = err?.statusMessage || 'Erreur lors de la suppression'
+  } finally {
+    deletingAccount.value = false
+    showDeletePopup.value = false
+  }
+}
 </script>
 <template>
     <section class="flex border border-slate-950">
@@ -127,6 +150,12 @@ const onSecurityValidated = () => {
   :src="draftAvatarPreview || avatarRef"
   class="absolute inset-0 w-full h-full object-cover"
 />
+                    <img 
+                        v-else
+                        src="../../components/assets/Portrait_Placeholder.png" 
+                        alt="Avatar utilisateur"
+                        class="absolute inset-0 w-full h-full object-cover"
+                    />
 
   <label class="absolute right-0 bottom-0 w-12 h-12 bg-slate-700 opacity-85 p-2 rounded-tl cursor-pointer">
     <AssetsParametres />
@@ -169,27 +198,6 @@ const onSecurityValidated = () => {
                     </form>
                 </div>
             </header>
-            <section class="flex flex-col mt-5 bg-slate-900 p-5 rounded-lg">
-                <label for="email" class="font-semibold">Email</label>
-                <div v-if="!ModifMail" class="flex items-center h-fit opacity-55"><p class="p-2 pr-1 font-light">{{ email }}</p><AssetsIconPen @click="ModifMail = !ModifMail; requestSensitiveChange('email')" class="w-6 h-6 p-1 rounded-full bg-white bg-opacity-0 hover:bg-opacity-10 active:bg-opacity-20"/></div>
-                <form v-if="ModifMail" action="" class="flex flex-wrap">
-                    <input type="email" id="email" name="email" class="mt-2 ml-2 bg-slate-600 border border-slate-500 rounded">
-                    <div class="flex gap-2 mt-2 mx-2">
-                    <button class="text-sm px-2 bg-indigo-900 rounded text-white h-[23.5px]">Enregistrer</button>
-                    <button @click="ModifMail = !ModifMail" class="text-sm px-2 bg-gray-950 rounded text-white h-[23.5px]">Annuler</button>
-                    </div>
-                </form>
-                <label for="motdepasse" class="mt-5 font-semibold">Mot de passe</label>
-                <!-- <input type="text" id="motdepasse" name="motdepasse" class="mt-2 bg-slate-600 border border-slate-50 rounded"> -->
-                <div v-if="!ModifMDP" class="flex items-center h-fit opacity-55"><p class="p-2 pr-1 font-light">••••••••</p><AssetsIconPen @click="ModifMDP = !ModifMDP; requestSensitiveChange('mdp')" class="w-6 h-6 p-1 rounded-full bg-white bg-opacity-0 hover:bg-opacity-10 active:bg-opacity-20"/></div>
-                <form v-if="ModifMDP" action="" class="flex flex-wrap">
-                    <input type="email" id="email" name="email" class="mt-2 ml-2 bg-slate-600 border border-slate-500 rounded">
-                    <div class="flex gap-2 mt-2 mx-2">
-                    <button class="text-sm px-2 bg-indigo-900 rounded text-white h-[23.5px]">Enregistrer</button>
-                    <button @click="ModifMDP = !ModifMDP" class="text-sm px-2 bg-gray-950 rounded text-white h-[23.5px]">Annuler</button>
-                    </div>
-                </form>
-            </section>
         </section>
         <nav class="bg-slate-900 w-fit p-5 hidden md:flex flex-col justify-between">
             <button @click="saveAllChanges" :disabled="!hasChanges || loadingSave" class="bg-indigo-800 hover:bg-indigo-700 active:bg-indigo-600 text-white px-3 py-1.5 rounded-sm">Enregistrer les modifications</button>
@@ -199,7 +207,22 @@ const onSecurityValidated = () => {
                     class="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white px-3 py-1.5 rounded-sm">
                     Ce déconnecter
                 </button>                 
-                <button class="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white px-3 py-1.5 rounded-sm">Supprimé son compte</button>                
+                <button
+  class="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white px-3 py-1.5 rounded-sm"
+  @click="showDeletePopup = true"
+>
+  Supprimer son compte
+</button>
+
+<ConfirmPopUp
+  v-model="showDeletePopup"
+  title="Confirmation"
+  message="Es-tu sûr de vouloir supprimer ton compte ? Cette action est irréversible."
+  @confirm="deleteAccount"
+/>
+
+<p v-if="deleteError" class="text-red-400 text-sm mt-2">{{ deleteError }}</p>
+         
             </div>
         </nav>
     </section>

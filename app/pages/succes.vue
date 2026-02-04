@@ -12,7 +12,7 @@
         </div>
         <section class="bg-slate-900 p-3 mt-5 rounded-lg">
             <div class="flex gap-2 items-center mt-2">
-                <div class="w-10 h-10 bg-orange-500 rounded border border-slate-700"></div>
+                <div class="w-10 h-10 bg-[url(https://picsum.photos/640/640?random=57)] bg-cover rounded border border-slate-700"></div>
                 <h2 class="text-xl font-semibold">Sad Joy</h2>
             </div>
             <div class="flex items-center bg-slate-950 border border-slate-800 rounded-lg p-3 mt-5">
@@ -25,7 +25,7 @@
             </div>
             <article class="flex flex-col gap-5">
                 <div class="flex items-center bg-slate-950 border border-slate-800 rounded-lg p-3 mt-5 gap-4">
-                    <div class="w-9 h-9 bg-orange-500 rounded border border-slate-700"></div>
+                    <div class="w-9 h-9 bg-[url(https://picsum.photos/640/640?random=80)] bg-cover rounded border border-slate-700"></div>
                     <div class="flex flex-col">
                         <h2 class="font-semibold">Terminer le jeu</h2>
                         <p class="mt-2 opacity-75">Terminez l'histoire principale du jeu.</p>
@@ -34,7 +34,7 @@
             </article>
             <article class="flex flex-col gap-5">
                 <div class="flex items-center bg-slate-950 border border-slate-800 rounded-lg p-3 mt-5 gap-4">
-                    <div class="w-9 h-9 bg-orange-500 rounded border border-slate-700"></div>
+                    <div class="w-9 h-9 bg-[url(https://picsum.photos/640/640?random=81)] bg-cover rounded border border-slate-700"></div>
                     <div class="flex flex-col">
                         <h2 class="font-semibold">Terminer le jeu</h2>
                         <p class="mt-2 opacity-75">Terminez l'histoire principale du jeu.</p>
@@ -43,7 +43,7 @@
             </article>
             <article class="flex flex-col gap-5">
                 <div class="flex items-center bg-slate-950 border border-slate-800 rounded-lg p-3 mt-5 gap-4">
-                    <div class="w-9 h-9 bg-orange-500 rounded border border-slate-700"></div>
+                    <div class="w-9 h-9 bg-[url(https://picsum.photos/640/640?random=82)] bg-cover rounded border border-slate-700"></div>
                     <div class="flex flex-col">
                         <h2 class="font-semibold">Terminer le jeu</h2>
                         <p class="mt-2 opacity-75">Terminez l'histoire principale du jeu.</p>
@@ -52,7 +52,7 @@
             </article>
             <article class="flex flex-col gap-5">
                 <div class="flex items-center bg-slate-950 border border-slate-800 rounded-lg p-3 mt-5 gap-4">
-                    <div class="w-9 h-9 bg-orange-500 rounded border border-slate-700"></div>
+                    <div class="w-9 h-9 bg-[url(https://picsum.photos/640/640?random=83)] bg-cover rounded border border-slate-700"></div>
                     <div class="flex flex-col">
                         <h2 class="font-semibold">Terminer le jeu</h2>
                         <p class="mt-2 opacity-75">Terminez l'histoire principale du jeu.</p>
@@ -61,7 +61,7 @@
             </article>
             <article class="flex flex-col gap-5">
                 <div class="flex items-center bg-slate-950 border border-slate-800 rounded-lg p-3 mt-5 gap-4">
-                    <div class="w-9 h-9 bg-orange-500 rounded border border-slate-700"></div>
+                    <div class="w-9 h-9 bg-[url(https://picsum.photos/640/640?random=84)] bg-cover rounded border border-slate-700"></div>
                     <div class="flex flex-col">
                         <h2 class="font-semibold">Terminer le jeu</h2>
                         <p class="mt-2 opacity-75">Terminez l'histoire principale du jeu.</p>
@@ -70,7 +70,7 @@
             </article>
             <article class="flex flex-col gap-5">
                 <div class="flex items-center bg-slate-950 border border-slate-800 rounded-lg p-3 mt-5 gap-4">
-                    <div class="w-9 h-9 bg-orange-500 rounded border border-slate-700"></div>
+                    <div class="w-9 h-9 bg-[url(https://picsum.photos/640/640?random=85)] bg-cover rounded border border-slate-700"></div>
                     <div class="flex flex-col">
                         <h2 class="font-semibold">Terminer le jeu</h2>
                         <p class="mt-2 opacity-75">Terminez l'histoire principale du jeu.</p>

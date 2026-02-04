@@ -31,7 +31,7 @@ import { user, pseudo, avatar  } from '~/composables/useAuth'
 <!-- fallback si pas d'avatar -->
 <img 
   v-else 
-  src="https://picsum.photos/640/640?random=20" 
+  src="../components/assets/Portrait_Placeholder.png" 
   alt="Avatar par défaut" 
   class="bg-cover h-10 lg:h-14 w-10 lg:w-14 min-w-10 lg:min-w-14 rounded-full border border-slate-500 text-lg md:text-base lg:text-xl"
 /></NuxtLink>

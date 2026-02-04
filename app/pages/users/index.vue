@@ -28,6 +28,12 @@ const pseudo = pseudoRef
                         alt="Avatar utilisateur"
                         class="w-full h-full object-cover"
                     />
+                    <img 
+                        v-else
+                        src="../../components/assets/Portrait_Placeholder.png" 
+                        alt="Avatar utilisateur"
+                        class="w-full h-full object-cover"
+                    />
                 </div>                
                 <div class="flex flex-col p-5 pt-0 sm:p-5 ">
                     <h1 class="text-2xl font-light break-words capitalize">{{ pseudo }}</h1>
@@ -52,7 +58,7 @@ const pseudo = pseudoRef
             </header>
             <section class="bg-slate-900 p-3 mt-5 rounded-lg">
                 <div class="flex gap-2 mt-2 items-center">
-                    <div class="w-12 h-12 bg-orange-500 rounded border border-slate-700"></div>
+                    <div class="w-12 h-12 bg-[url(https://picsum.photos/640/640?random=57)] bg-cover rounded border border-slate-700"></div>
                     <h2 class="text-xl font-semibold">Sad Joy</h2>
                 </div>
                 <div class="px-5 pt-3 mt-5 pb-1 border-t border-slate-600">
