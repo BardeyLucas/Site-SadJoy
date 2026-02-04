@@ -7,9 +7,8 @@ export default defineEventHandler(async (event) => {
   console.log('PLAYFAB_TITLE_ID:', process.env.PLAYFAB_TITLE_ID ? 'OK' : 'MISSING')
   console.log('PLAYFAB_DEV_SECRET_KEY:', process.env.PLAYFAB_DEV_SECRET_KEY ? 'OK' : 'MISSING')
   console.log('SESSION_COOKIE_NAME:', process.env.SESSION_COOKIE_NAME ? 'OK' : 'MISSING')
-  
+
   const playFabId = getCookie(event, 'SESSION_COOKIE_NAME')
-  console.log('playFabId cookie:', playFabId)
   if (!playFabId) return { user: false, pseudo: '', email: '' }
 
   PlayFabSdk.PlayFab.settings = {
