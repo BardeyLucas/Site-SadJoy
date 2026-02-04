@@ -4,7 +4,7 @@ import * as PlayFabSdk from 'playfab-sdk'
 const PlayFabAdmin = PlayFabSdk.PlayFabAdmin as any
 
 export default defineEventHandler(async (event) => {
-  const playFabId = getCookie(event, 'PLAYFAB_ID')
+  const playFabId = getCookie(event, 'SESSION_COOKIE_NAME')
   if (!playFabId) throw createError({ statusCode: 401, statusMessage: 'Non connecté' })
 
   PlayFabSdk.PlayFab.settings = {

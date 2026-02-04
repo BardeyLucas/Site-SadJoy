@@ -2,7 +2,7 @@ import { defineEventHandler, readBody, getCookie, createError } from 'h3'
 import * as PlayFabSdk from 'playfab-sdk'
 
 export default defineEventHandler(async (event) => {
-  const playFabId = getCookie(event, 'PLAYFAB_ID')
+  const playFabId = getCookie(event, 'SESSION_COOKIE_NAME')
   if (!playFabId) {
     throw createError({ statusCode: 401, statusMessage: 'Non connecté' })
   }

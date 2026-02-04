@@ -2,12 +2,12 @@ import { defineEventHandler, getCookie } from 'h3'
 import * as PlayFabSdk from 'playfab-sdk'
 
 export default defineEventHandler(async (event) => {
-  const playFabId = getCookie(event, 'PLAYFAB_ID')
+  const playFabId = getCookie(event, 'SESSION_COOKIE_NAME')
   if (!playFabId) return { user: false, pseudo: '', email: '' }
 
   PlayFabSdk.PlayFab.settings = {
-    titleId: process.env.PLAYFAB_TITLE_ID!,
-    developerSecretKey: process.env.PLAYFAB_DEV_SECRET!,
+    titleId: process.env.PLAYFAB_TITLE_ID || '',
+    developerSecretKey: process.env.PLAYFAB_DEV_SECRET_KEY,
     productionUrl: 'https://107067.playfabapi.com',
     verticalName: ''
   }
