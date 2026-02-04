@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
   PlayFabSdk.PlayFab.settings = {
     titleId: process.env.PLAYFAB_TITLE_ID || '',
     developerSecretKey: process.env.PLAYFAB_DEV_SECRET_KEY,
-    productionUrl: `https://${process.env.PLAYFAB_TITLE_ID}.playfabapi.com`,
+    productionUrl: 'https://107067.playfabapi.com',
     verticalName: ''
   }
 
