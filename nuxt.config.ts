@@ -3,12 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css : ['~/styles/main.scss'],
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/ui', '@nuxtjs/google-fonts', '@nuxtjs/sanity'],
-  tailwindcss: {
-    exposeConfig: true,
-    viewer: true,
-    // and more...
-  },
+  modules: ['@nuxt/ui', '@nuxtjs/google-fonts', '@nuxtjs/sanity'],
 
   sanity: {
     projectId: 'nhw1hulo',
